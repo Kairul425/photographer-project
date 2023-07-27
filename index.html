@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style tailwindcss -->
+    <link href="dist/output.css" rel="stylesheet" />
+
+    <!-- hamburger menu -->
+    <link href="src/hamburgers.css" rel="stylesheet" />
+
+    <!-- link swiper css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <!-- alpine js -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- nav -->
+    <nav
+      x-data="{ open: false, isActive: false, scrolled: false }"
+      x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
+      :class="{ 'backdrop-blur-sm bg-white/30' : scrolled }"
+      class="fixed top-0 left-0 right-0 z-50 lg:py-4 px-4 bg-transparent transition-colors duration-300 ease-in-out"
+    >
+      <div class="container mx-auto flex justify-between items-center">
+        <img src="public/logo/photographer.svg" alt="logophotographer" class="w-36" />
+        <div class="hidden lg:block">
+          <ul class="flex text-white text-sm font-normal">
+            <li class="mr-3 hover:text-slate-300 transition"><a href="#home">Home</a></li>
+            <li class="mr-3 hover:text-slate-300 transition"><a href="#about">About</a></li>
+            <li class="mr-3 hover:text-slate-300 transition"><a href="#gallery">Gallery</a></li>
+            <li class="mr-3 hover:text-slate-300 transition"><a href="#client">Client</a></li>
+            <li class="hover:text-slate-300 transition"><a href="#contack">Contack</a></li>
+          </ul>
+        </div>
+        <div class="lg:hidden">
+          <button @click="open = !open, isActive = !isActive" @click.outside="open = false, isActive = false" x-bind:class="{ 'is-active': isActive }" class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        x-show="open"
+        x-transition:enter="transition transform ease-in-out duration-500"
+        x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition transform ease-in-out duration-500"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full"
+        class="absolute right-0 px-10 bg-slate-400 rounded-l-lg drop-shadow-2xl"
+      >
+        <ul class="text-lg text-slate-800 py-2 font-semibold">
+          <li class="mb-2"><a href="#home">Home</a></li>
+          <li class="mb-2"><a href="#about">About</a></li>
+          <li class="mb-2"><a href="#gallery">Gallery</a></li>
+          <li class="mb-2"><a href="#client">Client</a></li>
+          <li><a href="#contack">Contack</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- section home -->
+    <section id="home" style="background-image: url('public/img/homebaner.png')" class="flex bg-cover min-h-screen items-center justify-center">
+      <div class="max-w-lg p-3 rounded-lg h-64 text-center bg-white/30 flex items-center">
+        <div class="leading-relaxed">
+          <h2 class="text-white text-2xl font-semibold">Hello</h2>
+          <h1 class="text-white text-4xl font-bold mb-4">I Am <span class="bg-gradient-to-r from-slate-100 to-red-500 bg-clip-text text-transparent">Photographer</span></h1>
+          <p class="text-white text-sm">"An unforgettable storyline in every photo."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- section about -->
+    <section id="about" class="pt-36 pb-32 bg-bgone relative">
+      <div class="container mx-auto px-4">
+        <h4 class="text-center font-bold text-3xl">About</h4>
+        <div class="flex flex-wrap">
+          <div class="w-full mt-14 md:w-1/2">
+            <img src="public/img/profil.png" alt="profil" class="w-36 md:w-44 lg:w-52 rounded-xl shadow-2xl mx-auto" />
+          </div>
+          <div class="mt-14 w-full md:w-1/2">
+            <p class="text-base text-slate-500">
+              "I am a photographer dedicated to capturing the beautiful moments in life. Every picture I take has a unique story and can tell more than a thousand words. Through my expertise in photography, I strive to capture the beauty,
+              emotion and story in behind every moment."
+            </p>
+            <button class="mt-5 py-3 px-7 bg-button text-white text-sm rounded-lg hover:bg-slate-700 transition">Download CV</button>
+          </div>
+        </div>
+      </div>
+
+      <img src="public/logo/camera.svg" alt="logo camera" class="w-28 lg:w-32 absolute right-3 bottom-0 lg:bottom-4 animate-bounce-slow" />
+    </section>
+
+    <!-- section gallery -->
+    <section x-data="{buka: false}" id="gallery" class="pt-36 pb-32 bg-blame">
+      <div class="container mx-auto px-4">
+        <h4 class="text-center font-bold text-3xl">Gallery</h4>
+        <div class="flex flex-wrap">
+          <div class="w-full mt-14">
+            <img src="public/img/galery1.png" alt="gallery1" class="w-full shadow-lg md:w-56 lg:w-64 md:float-left md:mr-4" />
+            <div class="items-center">
+              <p class="text-base lg:text-xl mt-6 text-slate-700">
+                "I have a knack for capturing the perfect moment in landscape photography. From sunsets, to emerging mists, to sudden changes in weather, you can capture rare moments and create memorable and unique photos."
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap">
+          <div class="w-full mt-14">
+            <img src="public/img/galery2.png" alt="gallery1" class="w-full shadow-lg md:w-56 lg:w-64 md:float-right md:ml-4" />
+            <div class="items-center">
+              <p class="text-base lg:text-xl mt-6 text-slate-700">
+                "In every shoot, I try to create a comfortable and relaxed atmosphere for you. I want you to feel relaxed and enjoy every moment without pressure. With a professional and friendly approach, I work with you to understand your
+                vision and desires, so that every photo the result reflects your personality and strong relationship."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button @click="buka = !buka" x-text="buka ? 'Close' : 'More..' " class="mt-14 mx-auto block py-3 px-7 bg-button rounded-full text-white text-base hover:bg-slate-800 shadow-lg"></button>
+
+        <!-- swiper gallery -->
+        <div
+          x-show="buka"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 scale-90"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-300"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-90"
+          class="swiper mySwiper mt-10"
+        >
+          <div class="swiper-wrapper flex">
+            <div class="swiper-slide m-auto"><img src="public/img/foto1.jpg" alt="foto1" class="rounded-lg lg:max-w-lg mx-auto" /></div>
+            <div class="swiper-slide m-auto"><img src="public/img/foto2.jpg" alt="foto1" class="rounded-lg lg:max-w-lg mx-auto" /></div>
+            <div class="swiper-slide m-auto"><img src="public/img/foto3.jpg" alt="foto1" class="rounded-lg lg:max-w-lg mx-auto" /></div>
+            <div class="swiper-slide m-auto"><img src="public/img/foto4.jpg" alt="foto1" class="rounded-lg lg:max-w-lg mx-auto" /></div>
+            <div class="swiper-slide m-auto"><img src="public/img/foto5.jpg" alt="foto1" class="rounded-lg lg:max-w-lg mx-auto" /></div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- client -->
+    <section id="client" class="pt-36 pb-32 bg-bgungu">
+      <div class="container mx-auto">
+        <h4 class="text-center font-bold text-3xl">Client</h4>
+        <div class="w-full px-4 mt-24">
+          <div class="flex flex-wrap justify-center items-center">
+            <div class="relative px-2 max-w-xs mx-4 min-h-[170px] bg-card p-4 rounded-lg shadow-lg mb-16">
+              <img src="public/img/anime2.jpg" alt="anime2" class="w-[80px] h-[80px] rounded-full absolute -top-10 left-1/2 -translate-x-1/2 border-4 border-slate-400" />
+              <div class="text-center mt-10">
+                <h5 class="text-xl font-semibold text-white">Amelia J.</h5>
+                <p class="text-base font-normal text-slate-300 mt-2">"Capture life's essence through the lens."</p>
+              </div>
+            </div>
+            <div class="relative px-2 max-w-xs mx-4 min-h-[170px] bg-card p-4 rounded-lg shadow-lg mb-16">
+              <img src="public/img/anime3.jpg" alt="anime3" class="w-[80px] h-[80px] rounded-full absolute -top-10 left-1/2 -translate-x-1/2 border-4 border-slate-400" />
+              <div class="text-center mt-10">
+                <h5 class="text-xl font-semibold text-white">Ethan T.</h5>
+                <p class="text-base font-normal text-slate-300 mt-2">"Moments framed, memories eternal."</p>
+              </div>
+            </div>
+            <div class="relative px-2 max-w-xs mx-4 min-h-[170px] bg-card p-4 rounded-lg shadow-lg mb-16">
+              <img src="public/img/anime4.jpg" alt="anime4" class="w-[80px] h-[80px] rounded-full absolute -top-10 left-1/2 -translate-x-1/2 border-4 border-slate-400" />
+              <div class="text-center mt-10">
+                <h5 class="text-xl font-semibold text-white">Olivia R.</h5>
+                <p class="text-base font-normal text-slate-300 mt-2">"Unveiling beauty through photography."</p>
+              </div>
+            </div>
+            <div class="relative px-2 max-w-xs mx-4 min-h-[170px] bg-card p-4 rounded-lg shadow-lg mb-16">
+              <img src="public/img/anime5.jpg" alt="anime5" class="w-[80px] h-[80px] rounded-full absolute -top-10 left-1/2 -translate-x-1/2 border-4 border-slate-400" />
+              <div class="text-center mt-10">
+                <h5 class="text-xl font-semibold text-white">Benjamin H.</h5>
+                <p class="text-base font-normal text-slate-300 mt-2">"Journey through moments, frozen in time."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contack" class="bg-blame pt-36 pb-16">
+      <div class="container m-auto">
+        <h4 class="text-center font-bold text-3xl">Contact</h4>
+        <div class="flex flex-wrap mt-14 items-center">
+          <div class="w-full px-4 md:w-1/2">
+            <img src="public/logo/end.svg" alt="end" class="mx-auto animate-animasi" />
+          </div>
+          <div class="w-full px-4 md:w-1/2">
+            <button class="block mx-auto bg-forum w-full py-2 mb-3 rounded-xl cursor-pointer hover:bg-red-800 transition group">
+              <span class="flex justify-center items-center text-slate-950 font-semibold group-hover:text-white group-hover:transition"><img src="public/logo/twitter.svg" alt="twitter" class="w-5 mr-2" />My Twitter</span>
+            </button>
+            <button class="block mx-auto bg-forum w-full py-2 mb-3 rounded-xl cursor-pointer hover:bg-red-800 transition group">
+              <span class="flex justify-center items-center text-slate-950 font-semibold group-hover:text-white group-hover:transition"><img src="public/logo/facebook.svg" alt="twitter" class="w-5 mr-2" />My Facebook</span>
+            </button>
+            <button class="block mx-auto bg-forum w-full py-2 mb-3 rounded-xl cursor-pointer hover:bg-red-800 transition group">
+              <span class="flex justify-center items-center text-slate-950 font-semibold group-hover:text-white group-hover:transition"><img src="public/logo/instagram.svg" alt="twitter" class="w-5 mr-2" />My Instagram</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-footer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#9DB2BF"
+          fill-opacity="1"
+          d="M0,32L34.3,80C68.6,128,137,224,206,261.3C274.3,299,343,277,411,250.7C480,224,549,192,617,165.3C685.7,139,754,117,823,128C891.4,139,960,181,1029,208C1097.1,235,1166,245,1234,234.7C1302.9,224,1371,192,1406,176L1440,160L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+        ></path>
+      </svg>
+      <div class="mx-auto py-8 px-2">
+        <p class="text-[10px] text-center text-white mb-2">Create everlasting memories with us, through the most precious moments.😊</p>
+        <p class="text-[10px] text-center text-white">"Copyright © RullsCuy 2023"</p>
+      </div>
+    </footer>
+
+    <!-- link swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- js swiper code -->
+    <script>
+      var swiper = new Swiper('.mySwiper', {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    </script>
+  </body>
+</html>
